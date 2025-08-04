@@ -40,10 +40,10 @@ internal class PdfConverter private constructor() : Runnable {
             .build()
 
     override fun run() {
-        mWebView = WebView(mContext).apply{
-            settings.javaScriptEnabled = true
-            settings.domStorageEnabled = true
-        }
+        mWebView = WebView(mContext)
+        mWebView!!.settings.javaScriptEnabled = true
+        mWebView!!.settings.domStorageEnabled = true 
+
         mWebView!!.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
